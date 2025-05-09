@@ -21,7 +21,6 @@ def test_request_quote_form_happy_path(page):
 
     assert quote_page.is_success_message_visible()
 
-
 def test_request_quote_form_validation_empty_submission(page):
     quote_page = RequestQuotePage(page)
     quote_page.scroll_to_form(4000)

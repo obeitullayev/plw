@@ -5,7 +5,6 @@ class RequestQuotePage:
     def scroll_to_form(self, scroll_target):
         self.page.evaluate(f"() => window.scrollTo(0, {scroll_target})")
 
-
     def fill_form(self, name, email, service, message, purpose, withdrawal_options):
         self.page.fill("#name", name)
         self.page.fill("#email", email)
