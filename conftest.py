@@ -7,6 +7,9 @@ def page():
         browser = p.chromium.launch(headless=False)
         context = browser.new_context()
         page = context.new_page()
-        page.goto("https://qatest.datasub.com")
         yield page
         browser.close()
+
+@pytest.fixture(scope="session")
+def base_url():
+    return "https://qatest.datasub.com"
