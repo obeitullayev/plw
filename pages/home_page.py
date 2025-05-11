@@ -27,5 +27,8 @@ class RequestQuotePage:
     def get_field_value(self, selector):
         return self.page.locator(selector).input_value()
 
+    def is_element_checked(self, selector):
+        return self.page.locator(selector).is_checked()
+
     def get_error_visibility(self, selector):
         return self.page.locator(selector).is_visible()
