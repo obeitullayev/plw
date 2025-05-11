@@ -10,22 +10,22 @@ class RequestQuotePage:
         self.page.evaluate(f"() => window.scrollTo(0, {scroll_target})")
 
     def fill_form_quote(self, name, email, service, message, purpose, withdrawal_options):
-        self.page.fill("#name", name)
-        self.page.fill("#email", email)
-        self.page.select_option("select#service", service)
-        self.page.fill("#message", message)
-        self.page.check(f"input[value='{purpose}']")
+        self.page.locator("#name").fill(name)
+        self.page.locator("#email").fill(email)
+        self.page.locator("select#service").select_option(service)
+        self.page.locator("#message").fill(message)
+        self.page.locator(f"input[value='{purpose}']").check()
         for option in withdrawal_options:
-            self.page.check(f"input[value='{option}']")
+            self.page.locator(f"input[value='{option}']").check()
 
     def submit(self):
-        self.page.click("button:has-text('Request A Quote')")
+        self.page.locator("button:has-text('Request A Quote')").click()
 
     def is_success_message_visible(self):
-        return self.page.wait_for_selector("#formStatus", state="visible")
+        return self.page.locator("#formStatus").is_visible()
 
     def get_field_value(self, selector):
-        return self.page.input_value(selector)
+        return self.page.locator(selector).input_value()
 
     def get_error_visibility(self, selector):
-        return self.page.wait_for_selector(selector, state="visible")
+        return self.page.locator(selector).is_visible()

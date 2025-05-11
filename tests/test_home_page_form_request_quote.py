@@ -29,7 +29,7 @@ class TestRequestQuoteForm():
         home_page.scroll_to_form(4000)
         home_page.submit()
 
-        assert home_page.get_error_visibility("input#name.is-invalid")
-        assert home_page.get_error_visibility("input#email.is-invalid")
-        assert home_page.get_error_visibility("select#service.is-invalid")
-        assert home_page.get_error_visibility("textarea#message.is-invalid")
+        assert home_page.get_error_visibility("input#name.is-invalid"), "Ошибка: поле 'Name' не содержит сообщение об ошибке"
+        assert home_page.get_error_visibility("input#email.is-invalid"), "Ошибка: поле 'Email' не содержит сообщение об ошибке"
+        assert home_page.get_error_visibility("select#service.is-invalid"), "Ошибка: поле 'Service' не содержит сообщение об ошибке"
+        assert home_page.get_error_visibility("textarea#message.is-invalid"), "Ошибка: поле 'Message' не содержит сообщение об ошибке"
